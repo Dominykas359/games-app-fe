@@ -1,0 +1,16 @@
+.input-field{
+    border: none;
+    border-radius: 0.5em;
+    padding-left: 0.5em;
+    padding-right: 1em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-size: 1.1em;
+    margin-bottom: 1.5em;
+    margin-top: 0.5em;
+    box-shadow: 0px 2px 4px hsl(272, 51%, 82%);
+}
+.error-message{
+    font-size: small;
+    color: red;
+}
