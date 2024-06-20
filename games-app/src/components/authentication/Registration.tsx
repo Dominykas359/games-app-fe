@@ -4,8 +4,12 @@ import './styles/InputLabel.css';
 import './styles/Card.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { GameModel } from '../../models/GameModel';
+import { fetchAllGames } from '../../api/GameApi';
+import { PlayerModel } from '../../models/PlayerModel';
+import { createGamePoints } from '../../api/GamePointsApi';
 
 interface Credentials {
     email: string,
@@ -30,6 +34,7 @@ interface Err {
 
 function Registration() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [games, setGames] = useState<GameModel[] | null>(null);
     const [credentials, setCredentials] = useState<Credentials>({
         email: '',
         nickname: '',
@@ -107,7 +112,20 @@ function Registration() {
         let response;
         try {
             response = await axios.post('http://localhost:8080/auth/register', registerCredentials);
-            console.log(response.data);
+
+            const user: PlayerModel = response.data;
+
+            if(games){
+                for(const game of games){
+                    await createGamePoints({
+                        id: '',
+                        playerId: user.id,
+                        gameId: game.id,
+                        points: 0
+                    })
+                }
+            }
+            
             navigate(AppRoutes.LOG_IN);
         } catch (error) {
             console.log(error);
@@ -115,6 +133,19 @@ function Registration() {
             setIsSubmitting(false);
         }
     };
+
+    useEffect(() => {
+        const fetchGamesData = async () => {
+            try{
+                const gamesData = await fetchAllGames();
+                setGames(gamesData);
+            } catch(error) {
+                console.error("Error fetching games:", error);
+            }
+            
+        }
+        fetchGamesData();
+    }, []);
 
     return (
         <div className="parent">
