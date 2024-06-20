@@ -42,8 +42,6 @@ function Login() {
                 // Save user data to localStorage or sessionStorage
                 localStorage.setItem('user', JSON.stringify(data));
                 localStorage.setItem('token', JSON.stringify(token));
-                console.log(response.data);
-                // Navigate to the games page
                 navigate(AppRoutes.GAMES);
             } else {
                 setError('Wrong email or password. Please try again.');

@@ -22,7 +22,7 @@ function Games(){
             <div className="page-title">
                 
                 <div>
-                    <h2>Games</h2>
+                    <h1>Games</h1>
                 </div>
                 <div>
                     {games ? (

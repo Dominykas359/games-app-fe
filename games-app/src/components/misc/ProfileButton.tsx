@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './styles/ProfilePicture.css';
+import { PlayerModel } from '../../models/PlayerModel';
+import { updatePlayer } from '../../api/PlayerApi';
 
 function ProfileButton() {
     const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -10,7 +12,20 @@ function ProfileButton() {
         setDropdownVisible(!dropdownVisible);
     };
 
-    const handleLogout = () => {
+    const handleLogout = async () => {
+        const data = localStorage.getItem('user');
+        
+        if (data) {
+            const user: PlayerModel = JSON.parse(data);
+            user.lastOnline = new Date();
+            
+            try {
+                await updatePlayer(user.id, user);
+            } catch (error) {
+                console.error('Error updating lastOnline:', error);
+            }
+        }
+        
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         navigate('/login');
