@@ -3,6 +3,13 @@ import { GamePointsModel } from "../models/GamePointsModel";
 
 const baseUrl = "http://localhost:8080/points"
 
+export const createGamePoints = async (body: GamePointsModel): Promise<GamePointsModel> => {
+
+    const response = await axios.post<GamePointsModel>(`${baseUrl}`, body);
+
+    return response.data;
+}
+ 
 export const fetchGamePointsByGameId = async (id: string): Promise<GamePointsModel[]> => {
 
     const response = await axios.get<GamePointsModel[]>(`${baseUrl}/game/${id}`);
