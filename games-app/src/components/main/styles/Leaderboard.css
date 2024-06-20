@@ -1,0 +1,50 @@
+.suka{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+.leaderboard-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 2px 4px 8px hsl(271, 43%, 76%);
+    padding: 0.5em;
+    width: 90%;
+    margin-top: 0.3em;
+    margin-bottom: 0.3em;
+}
+.leaderboard-card:hover{
+    transform: scale(1.05);
+}
+.leaderboards{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.leaderboard{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 0.5em;
+    border: none;
+    border-radius: 0.5em;
+    box-shadow: 2px 4px 8px hsl(0, 0%, 52%);
+    width: 23%;
+}
+.select-card{
+    padding: 0.5em;
+    margin-bottom: 1em;
+    align-items: center;
+    display: inline-block;
+    text-align: center;
+    appearance: none; 
+    border-radius: 0.5em;
+    box-shadow: 2px 4px 4px hsl(270, 100%, 94%);
+}
+.select-card:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+}

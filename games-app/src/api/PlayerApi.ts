@@ -17,6 +17,27 @@ export const fetchPlayerByUsername = async (username: string): Promise<PlayerMod
   return response.data;
 }
 
+export const fetchPlayersForLeaderboard = async (): Promise<PlayerModel[]> => {
+
+  const response = await axios.get<PlayerModel[]>(`${baseUrl}/leaderboard`);
+
+  return response.data;
+}
+
+export const fetchPlayersFromFriendLeaderboard = async (id: string): Promise<PlayerModel[]> => {
+
+  const response = await axios.get<PlayerModel[]>(`${baseUrl}/leaderboard/friends/${id}`);
+
+  return response.data;
+}
+
+export const fetchPlayersFromFriendLeaderboardByPlayer = async (id: string): Promise<PlayerModel[]> => {
+
+  const response = await axios.get<PlayerModel[]>(`${baseUrl}/leaderboard/friends/by-player/${id}`);
+
+  return response.data;
+}
+
 export const updatePlayer = async (id: string, player: PlayerModel): Promise<PlayerModel> => {
 
   const response = await axios.put<PlayerModel>(`${baseUrl}/${id}`, player);
