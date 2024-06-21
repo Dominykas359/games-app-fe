@@ -4,7 +4,7 @@ import './styles/InputLabel.css';
 import './styles/Card.css';
 import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { GameModel } from '../../models/GameModel';
 import { fetchAllGames } from '../../api/GameApi';
@@ -45,6 +45,14 @@ function Registration() {
         message: '',
         errorType: ErrorType.NoError 
     });
+    const [emailError, setEmailError] = useState<Err>({
+        message: '',
+        errorType: ErrorType.NoError
+    })
+    const [nicknameError, setNicknameError] = useState<Err>({
+        message: '',
+        errorType: ErrorType.NoError
+    })
     const navigate = useNavigate();
     
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,6 +71,58 @@ function Registration() {
     const handleConfirmPasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         handleInputChange(event);
         validatePasswords(credentials.password, event.target.value);
+    };
+
+    const handleCheckEmail = async (event: React.FocusEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+
+        try {
+            const response = await axios.get(`http://localhost:8080/auth/check-email/${value}`);
+
+            if (response) {
+                setEmailError({
+                    message: 'Email is already registered',
+                    errorType: ErrorType.EmailRegistered
+                });
+            } else {
+                setEmailError({
+                    message: '',
+                    errorType: ErrorType.NoError
+                });
+            }
+        } catch (error) {
+            console.error('Error checking email:', error);
+            setEmailError({
+                message: 'Error checking email',
+                errorType: ErrorType.Other
+            });
+        }
+    };
+
+    const handleCheckNickname = async (event: React.FocusEvent<HTMLInputElement>) => {
+        const { value } = event.target;
+
+        try {
+            const response = await axios.get(`http://localhost:8080/auth/check-nickname/${value}`);
+
+            if (response) {
+                setNicknameError({
+                    message: 'Username is already taken',
+                    errorType: ErrorType.UsernameTaken
+                });
+            } else {
+                setNicknameError({
+                    message: '',
+                    errorType: ErrorType.NoError
+                });
+            }
+        } catch (error) {
+            console.error('Error checking nickname:', error);
+            setNicknameError({
+                message: 'Error checking nickname',
+                errorType: ErrorType.Other
+            });
+        }
     };
 
     function isPasswordStrong(password: string): boolean {
@@ -147,6 +207,8 @@ function Registration() {
         fetchGamesData();
     }, []);
 
+
+
     return (
         <div className="parent">
             <div className="child">
@@ -164,9 +226,9 @@ function Registration() {
                             className="input-field"
                             value={credentials.email}
                             onChange={handleInputChange}
-                            onBlur={handleInputChange}
+                            onBlur={handleCheckEmail}
                             required />
-                        {error.errorType === ErrorType.EmailRegistered && (
+                        {emailError.errorType === ErrorType.EmailRegistered && (
                             <>
                                 <br />
                                 <span className="error-message">Email is already registered</span>
@@ -181,8 +243,9 @@ function Registration() {
                             className="input-field"
                             value={credentials.nickname}
                             onChange={handleInputChange}
+                            onBlur={handleCheckNickname}
                             required />
-                        {error.errorType === ErrorType.UsernameTaken && (
+                        {nicknameError.errorType === ErrorType.UsernameTaken && (
                             <>
                                 <br />
                                 <span className="error-message">Username is already taken</span>
