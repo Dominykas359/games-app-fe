@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../misc/Header";
 import { PlayerModel } from "../../models/PlayerModel";
-import { fetchPlayersForLeaderboard, fetchPlayersFromFriendLeaderboard, fetchPlayersFromFriendLeaderboardByPlayer } from "../../api/PlayerApi";
+import { fetchPlayerById, fetchPlayersForLeaderboard, fetchPlayersFromFriendLeaderboard, fetchPlayersFromFriendLeaderboardByPlayer } from "../../api/PlayerApi";
 import "./styles/Leaderboard.css";
 import { GameModel } from "../../models/GameModel";
 import { fetchAllGames } from "../../api/GameApi";
@@ -51,6 +51,20 @@ function Leaderboard() {
 
         fetchData();
     }, []);
+
+    useEffect(() => {
+        const fetchPlayer = async () => {
+            if(user){
+                try{
+                    const playerData = await fetchPlayerById(user?.id);
+                    setUser(playerData);
+                } catch(error) {
+                    console.error("Error fetching player:", error);
+                }
+            }
+        }
+        fetchPlayer();
+    }, [user]);
 
     useEffect(() => {
         if (playersFromFriends && playersFromFriendsByPlayer) {
