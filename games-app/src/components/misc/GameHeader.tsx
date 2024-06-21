@@ -29,7 +29,7 @@ function GameHeader({ points }: GameHeaderProps) {
                     <span>Points: {points}</span>
                 </div>
                 <div>
-                    <button className="back-button" onClick={handleButtonClick}>To game list</button>
+                    <button className="back-button" onClick={handleButtonClick}>To games list</button>
                 </div>
             </div>
             <hr></hr>
