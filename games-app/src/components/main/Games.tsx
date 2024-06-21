@@ -4,10 +4,12 @@ import { GameModel } from "../../models/GameModel";
 import { fetchAllGames } from "../../api/GameApi";
 import "./styles/Titles.css";
 import "./styles/GameCard.css";
+import { useNavigate } from "react-router-dom";
 
 function Games(){
 
     const[games, setGames] = useState<GameModel[] | null>(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchAllGames()
@@ -15,6 +17,10 @@ function Games(){
                 setGames(gamesData);
             })
     }, []);
+
+    const handleGameClick = (gameId: string) => {
+        navigate(`/games/${gameId}`);
+    };
 
     return(
         <>
@@ -28,7 +34,7 @@ function Games(){
                     {games ? (
                         <div className="game-container">
                             {games.map(game => (
-                                <div key={game.id}  className="game-card">
+                                <div key={game.id}  className="game-card" onClick={() => handleGameClick(game.id)}>
                                     <img className="game-picture" src="game.png"></img>
                                     <h6>{game.title}</h6>
                                 </div>

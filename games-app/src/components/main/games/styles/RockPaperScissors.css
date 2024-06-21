@@ -1,0 +1,51 @@
+.rock-paper-scissors-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.choices{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.choice {
+    font-size: 4em;
+    border: none;
+    box-shadow: 2px 4px 8px hsl(271, 79%, 89%);
+    border-radius: 50%;
+    margin-left: 0.2em;
+    margin-right: 0.2em;
+    cursor: pointer;
+    margin-bottom: 0.4em;
+    background-color: white;
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    text-align: center;
+}
+.choice:hover{
+    transform: scale(1.1);
+}
+.tie{
+    font-weight: bold;
+    font-size: 2em;
+}
+.win{
+    color: green;
+    font-weight: bold;
+    font-size: 2em;
+}
+.lose{
+    color: red;
+    font-weight: bold;
+    font-size: 2em;
+}
+.messages{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}

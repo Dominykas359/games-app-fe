@@ -6,6 +6,9 @@ export const AppRoutes = {
 
     FRIENDS: '/friends',
     GAMES: '/games',
+    ROCKPAPERSCISSORS: '/games/d62c84a7-27af-40b8-b96d-1b174c0c6448',
+    TICTACTOE: '/games/a196a4d1-08cb-4a26-9e17-769f6c4daec2',
+    ROULLETE: '/games/6728f513-f829-4f28-ad8e-62489ef12c86',
     SETTINGS: '/settings',
     LEADERBOARD: '/leaderboard',
     ERROR_PAGE: '/error',

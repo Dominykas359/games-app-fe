@@ -9,6 +9,20 @@ export const createGamePoints = async (body: GamePointsModel): Promise<GamePoint
 
     return response.data;
 }
+
+export const fetchGamePointById = async (id: string, playerId: string): Promise<GamePointsModel> => {
+
+    const response = await axios.get<GamePointsModel>(`${baseUrl}/one/${id}/player/${playerId}`);
+
+    return response.data;
+}
+
+export const fetchGamePointsById = async (id: string): Promise<GamePointsModel> => {
+
+    const response = await axios.get<GamePointsModel>(`${baseUrl}/${id}`);
+
+    return response.data;
+}
  
 export const fetchGamePointsByGameId = async (id: string): Promise<GamePointsModel[]> => {
 
@@ -20,6 +34,13 @@ export const fetchGamePointsByGameId = async (id: string): Promise<GamePointsMod
 export const fetchGamePointsByGameIdFriends = async (id: string, playerId: string): Promise<GamePointsModel[]> => {
 
     const response = await axios.get<GamePointsModel[]>(`${baseUrl}/leaderboard/${id}/player/${playerId}`);
+
+    return response.data;
+}
+
+export const updateGamePoints = async (id: string, body: GamePointsModel): Promise<GamePointsModel> => {
+
+    const response = await axios.put<GamePointsModel>(`${baseUrl}/${id}`, body);
 
     return response.data;
 }
