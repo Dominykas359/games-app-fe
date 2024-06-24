@@ -6,13 +6,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AppRoutes } from '../../types/routes';
 import { useState } from 'react';
 import axios from 'axios';
+import { PlayerModel } from '../../models/PlayerModel'; // Assuming PlayerModel definition
 
 interface Credentials {
     email: string,
     password: string
 }
 
-function Login() {
+interface LoginProps {
+    onLogin: (userData: PlayerModel) => Promise<void>; // Define onLogin prop here
+}
+
+function Login({ onLogin }: LoginProps) { // Receive onLogin as prop
 
     const navigate = useNavigate();
 
@@ -42,6 +47,9 @@ function Login() {
                 // Save user data to localStorage or sessionStorage
                 localStorage.setItem('user', JSON.stringify(data));
                 localStorage.setItem('token', JSON.stringify(token));
+                
+                // Call onLogin prop with user data
+                onLogin(data); // Assuming data is of type PlayerModel
                 navigate(AppRoutes.GAMES);
             } else {
                 setError('Wrong email or password. Please try again.');
