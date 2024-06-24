@@ -1,0 +1,102 @@
+.parent-settings{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+.settings-sections{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+.information-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 49%;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 2px 4px 8px hsl(0, 0%, 54%);
+}
+.password-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 49%;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 2px 4px 8px hsl(0, 0%, 54%);
+}
+.settings-form{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 90%;
+}
+.input-div{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+.setting-input{
+    width: 100%;
+    border: none;
+    border-radius: 0.8em;
+    box-shadow: 1px 2px 6px hsl(271, 72%, 72%);
+    padding: 0.5em;
+    font-size: 0.9em;
+}
+.change-password{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    margin: 1em;
+    cursor: pointer;
+    background-color: hsl(263, 44%, 62%);
+    color: white;
+}
+.change-password:hover{
+    transform: scale(1.05);
+}
+.change-password:active{
+    transform: scale(1.1);
+}
+.save-info{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    margin: 0.5em;
+    cursor: pointer;
+    background-color: hsl(263, 44%, 62%);
+    color: white;
+}
+.save-info:hover{
+    transform: scale(1.05);
+}
+.save-info:active{
+    transform: scale(1.1);
+}
+.delete-account{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    margin: 0.5em;
+    cursor: pointer;
+    background-color: hsl(0, 96%, 44%);
+    color: white;
+}
+.delete-account:hover{
+    transform: scale(1.1);
+}

@@ -141,6 +141,20 @@ const Friends = () => {
         }
     };
 
+    const formatDate = (dateString: Date | undefined): string => {
+        if (!dateString) return 'Not available';
+    
+        const date = new Date(dateString);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const hours = String(date.getHours()).padStart(2, '0');
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const seconds = String(date.getSeconds()).padStart(2, '0');
+        
+        return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+    };
+
     useEffect(() => {
         const data = localStorage.getItem('user');
         if (data) {
@@ -256,8 +270,9 @@ const Friends = () => {
                                     const friendName = friendNames.find(fn => fn.id === friend.friendId);
                                     return (
                                         <div key={friend.id} className="friend-card">
-                                            <h3 className="friend-card-nickname">{friendName?.nickname}</h3>
-                                            <h3 className="friend-card-date">{`Friends since: ${new Date(friend.friendsSince).getFullYear()}-${String(new Date(friend.friendsSince).getMonth() + 1).padStart(2, '0')}-${String(new Date(friend.friendsSince).getDate()).padStart(2, '0')}`}</h3>
+                                            <h4 className="friend-card-nickname">{friendName?.nickname}</h4>
+                                            <h4 className="friend-card-date">{`Friends since: ${new Date(friend.friendsSince).getFullYear()}-${String(new Date(friend.friendsSince).getMonth() + 1).padStart(2, '0')}-${String(new Date(friend.friendsSince).getDate()).padStart(2, '0')}`}</h4>
+                                            <h4 className="friend-card-date">{`Last online: ${friendName?.lastOnline ? formatDate(friendName?.lastOnline) : 'Not available'}`}</h4>
                                             <button className="remove-friend" type="submit" onClick={() => handleDeleteFriend(friend.id)}>Remove</button>
                                         </div>
                                     );
@@ -266,8 +281,9 @@ const Friends = () => {
                                     const friendName = friendNames.find(fn => fn.id === friend.playerId);
                                     return (
                                         <div key={friend.id} className="friend-card">
-                                            <h3 className="friend-card-nickname">{friendName?.nickname}</h3>
-                                            <h3 className="friend-card-date">{`Friends since: ${new Date(friend.friendsSince).getFullYear()}-${String(new Date(friend.friendsSince).getMonth() + 1).padStart(2, '0')}-${String(new Date(friend.friendsSince).getDate()).padStart(2, '0')}`}</h3>
+                                            <h4 className="friend-card-nickname">{friendName?.nickname}</h4>
+                                            <h4 className="friend-card-date">{`Friends since: ${new Date(friend.friendsSince).getFullYear()}-${String(new Date(friend.friendsSince).getMonth() + 1).padStart(2, '0')}-${String(new Date(friend.friendsSince).getDate()).padStart(2, '0')}`}</h4>
+                                            <h4 className="friend-card-date">{`Last online: ${friendName?.lastOnline ? formatDate(friendName?.lastOnline) : 'Not available'}`}</h4>
                                             <button className="remove-friend" type="submit" onClick={() => handleDeleteFriend(friend.id)}>Remove</button>
                                         </div>
                                     );

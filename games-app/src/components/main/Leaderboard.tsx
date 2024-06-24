@@ -154,7 +154,7 @@ function Leaderboard() {
     return (
         <>
             <Header />
-            <div className="suka">
+            <div className="parent-leaderboard">
                 <div>
                     <h1>Leaderboards</h1>
                 </div>

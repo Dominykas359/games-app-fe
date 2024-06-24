@@ -17,7 +17,10 @@ function ProfileButton() {
         
         if (data) {
             const user: PlayerModel = JSON.parse(data);
-            user.lastOnline = new Date();
+            const currentTime = new Date();
+            // Add 3 hours to the current time
+            currentTime.setHours(currentTime.getHours() + 3);
+            user.lastOnline = currentTime;
             
             try {
                 await updatePlayer(user.id, user);
