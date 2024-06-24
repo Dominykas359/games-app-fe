@@ -44,3 +44,10 @@ export const updatePlayer = async (id: string, player: PlayerModel): Promise<Pla
 
   return response.data;
 }
+
+export const deletePlayer = async (id: string): Promise<PlayerModel> => {
+
+  const response = await axios.delete<PlayerModel>(`${baseUrl}/${id}`);
+
+  return response.data;
+}
