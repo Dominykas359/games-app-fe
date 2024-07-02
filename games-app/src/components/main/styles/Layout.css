@@ -1,0 +1,161 @@
+.friends-parent-container{
+    display: flex;
+    justify-content: space-between;
+}
+.friends-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 2px 4px 8px hsl(271, 54%, 73%);
+}
+.invitations-section{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 29%;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 2px 4px 8px hsl(271, 54%, 73%);
+}
+.friends-list{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+}
+.friend-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: solid 1px hsl(0, 0%, 75%);
+    background-color: hsl(274, 54%, 97%);
+    box-shadow: 1px 2px 4px rgb(145, 126, 163);
+    border-radius: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    width: 100%;
+}
+.friend-card-nickname{
+    font-family: sans-serif;
+}
+.friend-card-date{
+    font-family: sans-serif;
+}
+.remove-friend{
+    border: none;
+    background-color: hsl(0, 80%, 53%);
+    color: white;
+    border-radius: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+    margin-left: 0.5em;
+    box-shadow: 0px 2px 4px black;
+}
+.remove-friend:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.remove-friend:active{
+    transform: scale(1.1);
+}
+.points-button{
+    border: none;
+    background-color: hsl(238, 45%, 45%);
+    color: white;
+    border-radius: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 1em;
+    box-shadow: 0px 2px 4px black;
+}
+.points-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.points-button:active{
+    transform: scale(1.1);
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+}
+.search-input{
+    padding: 0.5em;
+    border-radius: 1em;
+    border: none;
+    width: 70%;
+    box-shadow: 0px 1px 2px hsl(271, 95%, 85%);
+}
+.search-button{
+    border: none;
+    background-color: hsl(263, 44%, 62%);
+    color: white;
+    border-radius: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    padding-left: 2em;
+    padding-right: 2em;
+    box-shadow: 0px 2px 4px black;
+}
+.search-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.search-button:active{
+    transform: scale(1.1);
+}
+.invitation-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.invitation-button{
+    width: 35px;  
+    height: 35px; 
+    padding: 0; 
+    border: none; 
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0.2em;
+    box-shadow: 2px 4px 8px hsl(0, 0%, 51%);
+}
+.invitation-button:hover{
+    cursor: pointer;
+    transform: scale(1.05);
+}
+.invitation-button:active{
+    transform: scale(1.1);
+}
+.invitation-card{
+    width: 90%;
+    display: flex;
+    align-items: center;
+    border-radius: 2em;
+    box-shadow: 2px 4px 8px hsl(271, 52%, 84%);
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+.button-place{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+}
+.invitation-card-nickname{
+    padding-left: 0.5em;
+    width: 70%;
+}
