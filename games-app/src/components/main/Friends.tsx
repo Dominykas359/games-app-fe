@@ -119,11 +119,9 @@ const Friends = () => {
             alert(`Invitation sent to ${searchUsername}`);
             setSearchUsername('');
         } catch (error) {
-            console.error('Error sending invitation:', error);
-            alert('Error sending invitation. Please try again.');
+            alert('Such user does not exist.');
         }
     };
-
     const handleAcceptInvitation = async (invitation: InvitationModel) => {
         try {
             await createFriend({
