@@ -2,13 +2,17 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./styles/ProfilePicture.css";
+import "./styles/PointsButton.css";
+import "./styles/SendPointsModal.css";
 import { AppRoutes } from "../../types/routes";
 import { PlayerModel } from "../../models/PlayerModel";
 import { fetchPlayerById } from "../../api/PlayerApi";
+import SendPointsModal from "./SendPointsModal";
 
 function Header() {
     const [player, setPlayer] = useState<PlayerModel | null>(null);
     const [error, setError] = useState<string | null>(null);
+    const [pointsModal, setPointsModal] = useState(false);
 
     useEffect(() => {
         const data = localStorage.getItem('user');
@@ -34,6 +38,26 @@ function Header() {
         }
     }, []);
 
+    const handleSendPoints = () => {
+        //setPointsModal(false);
+    }
+
+    const handleCancel = () => {
+        setPointsModal(false);
+    }
+
+    const handleShowModal = () => {
+        setPointsModal(true);
+    }
+
+    // This function will update the player's points in the Header
+    const updatePlayerPoints = (newPoints: number) => {
+        if (player) {
+            setPlayer({ ...player, points: newPoints });
+            localStorage.setItem("user", JSON.stringify({ ...player, points: newPoints }));
+        }
+    };
+
     return (
         <>
             <div className="parent-header">
@@ -53,10 +77,19 @@ function Header() {
                 <div className="show-points">
                     <span>Points: {player ? player.points : 'Loading...'}</span>
                 </div>
+                <button className="send-points" onClick={handleShowModal}>Send points</button>
                 <ProfileButton />
             </div>
             <hr></hr>
             {error && <div className="error-message">{error}</div>}
+
+            <SendPointsModal
+                isOpen={pointsModal}
+                message="Are you sure you want to send points?"
+                onConfirm={handleSendPoints}
+                onCancel={handleCancel}
+                updatePlayerPoints={updatePlayerPoints} // Pass down to modal
+            ></SendPointsModal>
         </>
     );
 }
