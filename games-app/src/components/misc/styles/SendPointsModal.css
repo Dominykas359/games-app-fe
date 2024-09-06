@@ -1,0 +1,64 @@
+.send-points-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.send-points-modal-content{
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    text-align: center;
+}
+.points-send{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: hsl(263, 44%, 62%);
+    color: white;
+}
+.points-send:hover{
+    transform: scale(1.1);
+}
+.points-cancel{
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    border: none;
+    border-radius: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    margin-left: 1em;
+    background-color: hsl(0, 69%, 50%);
+    color: white;
+}
+.points-cancel:hover{
+    transform: scale(1.1);
+}
+.send-points-to{
+    padding: 1em;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 0px 2px 4px hsl(281, 76%, 74%);
+    margin-bottom: 1em;
+}
+.how-many-points{
+    padding: 1em;
+    border: none;
+    border-radius: 1em;
+    box-shadow: 0px 2px 4px hsl(281, 76%, 74%);
+    margin-left: 1em;
+    margin-bottom: 1em;
+}
